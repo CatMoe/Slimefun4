@@ -11,6 +11,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.events.SlimefunGuideOpenEvent;
@@ -44,7 +45,7 @@ public class SlimefunGuideListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onInteract(PlayerRightClickEvent e) {
+    public void onInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
 
         if (tryOpenGuide(p, e, SlimefunGuideMode.SURVIVAL_MODE) == Result.ALLOW) {
@@ -67,7 +68,7 @@ public class SlimefunGuideListener implements Listener {
     }
 
     @ParametersAreNonnullByDefault
-    private void openGuide(Player p, PlayerRightClickEvent e, SlimefunGuideMode layout) {
+    private void openGuide(Player p, PlayerInteractEvent e, SlimefunGuideMode layout) {
         SlimefunGuideOpenEvent event = new SlimefunGuideOpenEvent(p, e.getItem(), layout);
         Bukkit.getPluginManager().callEvent(event);
 
@@ -79,7 +80,7 @@ public class SlimefunGuideListener implements Listener {
 
     @Nonnull
     @ParametersAreNonnullByDefault
-    private Result tryOpenGuide(Player p, PlayerRightClickEvent e, SlimefunGuideMode layout) {
+    private Result tryOpenGuide(Player p, PlayerInteractEvent e, SlimefunGuideMode layout) {
         ItemStack item = e.getItem();
         if (SlimefunUtils.isItemSimilar(item, SlimefunGuide.getItem(layout), true, false)) {
 
