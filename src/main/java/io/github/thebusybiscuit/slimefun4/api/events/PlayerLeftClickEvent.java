@@ -22,7 +22,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
 /**
- * The {@link PlayerRightClickEvent} is our custom version of the {@link PlayerInteractEvent}.
+ * The {@link PlayerLeftClickEvent} is our custom version of the {@link PlayerInteractEvent}.
  * But it is only triggered on right click.
  * The main and (almost) sole purpose of this {@link Event} is to cache the {@link SlimefunItem}
  * of the {@link ItemStack} and/or {@link Block} involved.
@@ -32,7 +32,7 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
  * @author TheBusyBiscuit
  *
  */
-public class PlayerRightClickEvent extends PlayerEvent {
+public class PlayerLeftClickEvent extends PlayerEvent {
 
     private static final HandlerList handlers = new HandlerList();
 
@@ -54,13 +54,13 @@ public class PlayerRightClickEvent extends PlayerEvent {
     private Result blockResult;
 
     /**
-     * This constructs a new {@link PlayerRightClickEvent} based on the original {@link PlayerInteractEvent}.
+     * This constructs a new {@link PlayerLeftClickEvent} based on the original {@link PlayerInteractEvent}.
      * The {@link Result} of the original {@link PlayerInteractEvent} will be copied.
      * 
      * @param originalEvent
      *            The original {@link PlayerInteractEvent}
      */
-    public PlayerRightClickEvent(@Nonnull PlayerInteractEvent originalEvent) {
+    public PlayerLeftClickEvent(@Nonnull PlayerInteractEvent originalEvent) {
         super(originalEvent.getPlayer());
 
         event = originalEvent;
@@ -80,7 +80,7 @@ public class PlayerRightClickEvent extends PlayerEvent {
 
     /**
      * This returns the original {@link PlayerInteractEvent} that triggered this
-     * {@link PlayerRightClickEvent}.
+     * {@link PlayerLeftClickEvent}.
      * 
      * @return The original {@link PlayerInteractEvent}
      */
@@ -149,7 +149,7 @@ public class PlayerRightClickEvent extends PlayerEvent {
     }
 
     /**
-     * This method cancels the {@link PlayerRightClickEvent}.
+     * This method cancels the {@link PlayerLeftClickEvent}.
      * This will deny the item and block usage.
      */
     public void cancel() {
